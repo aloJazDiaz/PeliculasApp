@@ -3,10 +3,13 @@ import SwiftUI
 struct PantallaDetallePelicula: View {
     @EnvironmentObject var favs: FavoritosManager
     @Environment(\.dismiss) var dismiss
+    
 
     let pelicula: Pelicula
     let vieneDeBusqueda: Bool
 
+    @State private var mostrarExito = false
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
@@ -21,14 +24,18 @@ struct PantallaDetallePelicula: View {
                         .ignoresSafeArea(edges: .top)
                     
                   
-                    Button(action: {
-                        favs.toggleFavorito(pelicula)
-                    }) {
-                        Image(systemName: favs.esFavorito(pelicula) ? "heart.fill" : "heart")
-                            .foregroundColor(.red)
-                            .font(.title2)
-                            .padding()
-                    }
+                    Button {
+                                           favs.toggleFavorito(pelicula)
+                                           mostrarExito = true
+                                           DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                               mostrarExito = false
+                                           }
+                                       } label: {
+                                           Image(systemName: favs.esFavorito(pelicula) ? "heart.fill" : "heart")
+                                               .foregroundColor(.red)
+                                               .font(.title2)
+                                               .padding()
+                                       }
                 }
                 
                 VStack(alignment: .leading, spacing: 16) {
@@ -72,12 +79,29 @@ struct PantallaDetallePelicula: View {
                 }
                 .padding(.horizontal)
                 .padding(.top, 20)
+                .overlay(
+                            Group {
+                                if mostrarExito {
+                                    Text("Agregado a favoritos")
+                                        .padding()
+                                        .background(Color.green.opacity(0.85))
+                                        .foregroundColor(.white)
+                                        .cornerRadius(12)
+                                        .shadow(radius: 5)
+                                        .transition(.opacity.combined(with: .scale))
+                                        .animation(.easeInOut(duration: 0.3), value: mostrarExito)
+                                }
+                            }
+                            .padding(.top, 40),
+                            alignment: .top
+                        )
             }
         }
 
         
         .navigationBarBackButtonHidden(vieneDeBusqueda)
         .toolbar {
+            
             
            
         }
