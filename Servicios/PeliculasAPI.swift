@@ -16,7 +16,7 @@ import Foundation
 
 
 class PeliculasAPI {
-    private let apiKey = "0010e211d2f46f7b2fdfa6b6a97f7c90"
+    private let apiKey = "APIKEY"
     private let servicio = ServicioAPI()
 
     func obtenerPeliculasPopulares() async throws -> RespuestaPeliculas {
@@ -30,7 +30,7 @@ class PeliculasAPI {
     
     
     func obtenerPeliculasPorPais(codigoPais: String) async throws -> RespuestaPeliculas {
-        let urlString = "https://api.themoviedb.org/3/movie/popular?api_key=0010e211d2f46f7b2fdfa6b6a97f7c90&region=\(codigoPais)"
+        let urlString = "https://api.themoviedb.org/3/movie/popular?api_key=APIKEY&region=\(codigoPais)"
         
         let url = URL(string: urlString)!
         return try await servicio.obtenerDatos(desde: url)
@@ -38,7 +38,7 @@ class PeliculasAPI {
     
     func buscarPelicula(nombre: String) async throws -> RespuestaPeliculas {
         let texto = nombre.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? nombre
-        let url = URL(string: "https://api.themoviedb.org/3/search/movie?query=\(texto)&api_key=0010e211d2f46f7b2fdfa6b6a97f7c90&language=es-MX")!
+        let url = URL(string: "https://api.themoviedb.org/3/search/movie?query=\(texto)&api_key=APIKEY&language=es-MX")!
         return try await servicio.obtenerDatos(desde: url)
     }
 
