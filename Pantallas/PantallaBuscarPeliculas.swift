@@ -37,7 +37,7 @@ struct PantallaBuscarPeliculas: View {
                         .padding(.top)
                 } else {
                     List(vm.resultados) { pelicula in
-                        NavigationLink(destination: PantallaDetallePelicula(pelicula: pelicula)) {
+                        NavigationLink(destination: PantallaDetallePelicula(pelicula: pelicula, vieneDeBusqueda: true)) {
                             TarjetaPelicula(pelicula: pelicula)
                         }
                     }
