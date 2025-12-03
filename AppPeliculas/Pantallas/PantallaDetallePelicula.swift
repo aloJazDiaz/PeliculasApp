@@ -84,7 +84,7 @@ struct PantallaDetallePelicula: View {
                                 if mostrarExito {
                                     Text("Agregado a favoritos")
                                         .padding()
-                                        .background(Color.green.opacity(0.85))
+                                        .background(Color.red.opacity(0.85))
                                         .foregroundColor(.white)
                                         .cornerRadius(12)
                                         .shadow(radius: 5)
