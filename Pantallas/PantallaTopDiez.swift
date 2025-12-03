@@ -17,7 +17,7 @@ struct PantallaTopDiez: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     
-                   
+                   Spacer().frame(height: 30)
 
                     if vm.cargando {
                         ProgressView("Cargando...")
