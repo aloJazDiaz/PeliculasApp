@@ -20,7 +20,7 @@ struct PantallaInicio: View {
                     }
                     Spacer()
                     NavigationLink(destination: PantallaFavoritos()) {
-                        Label("Favs", systemImage: "star")
+                        Label("Favs", systemImage: "heart")
                     }
                     Spacer()
                     NavigationLink(destination: PantallaListaPaises()) {
