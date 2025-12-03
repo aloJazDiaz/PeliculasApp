@@ -16,7 +16,7 @@ struct PantallaInicio: View {
                     }
                     Spacer()
                     NavigationLink(destination: PantallaTopDiez()) {
-                        Label("Top 10", systemImage: "medal.circle")
+                        Label("Top 10", systemImage: "rosette")
                     }
                     Spacer()
                     NavigationLink(destination: PantallaFavoritos()) {
