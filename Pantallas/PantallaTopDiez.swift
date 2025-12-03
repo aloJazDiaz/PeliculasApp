@@ -17,10 +17,7 @@ struct PantallaTopDiez: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     
-                    Text("🔥 Top 10 Mundial")
-                        .font(.largeTitle.bold())
-                        .padding(.horizontal)
-                        .padding(.top, 10)
+                   
 
                     if vm.cargando {
                         ProgressView("Cargando...")
@@ -34,7 +31,7 @@ struct PantallaTopDiez: View {
                     }
                 }
             }
-            .navigationTitle("Top 10")
+            .navigationTitle("🔥 Top 10")
             .task {
                 await vm.cargarTopDiez()
             }
