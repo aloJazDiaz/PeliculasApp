@@ -17,7 +17,7 @@ struct PantallaPeliculasPorPais: View {
             }
             else {
                 List(vm.peliculas) { pelicula in
-                    NavigationLink(destination: PantallaDetallePelicula(pelicula: pelicula)) {
+                    NavigationLink(destination: PantallaDetallePelicula(pelicula: pelicula, vieneDeBusqueda: false)) {
                         TarjetaPelicula(pelicula: pelicula)
                     }
                 }
